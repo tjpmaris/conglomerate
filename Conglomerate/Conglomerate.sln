@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.Api", "Conglom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.Data", "Conglomerate.Data\Conglomerate.Data.csproj", "{A6ADF54C-7ACD-4616-8624-932385F6266C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.ServiceRepository", "Conglomerate.ServiceRepository\Conglomerate.ServiceRepository.csproj", "{CA882D61-8308-4932-9528-B905FAF3C697}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A6ADF54C-7ACD-4616-8624-932385F6266C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6ADF54C-7ACD-4616-8624-932385F6266C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6ADF54C-7ACD-4616-8624-932385F6266C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA882D61-8308-4932-9528-B905FAF3C697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA882D61-8308-4932-9528-B905FAF3C697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA882D61-8308-4932-9528-B905FAF3C697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA882D61-8308-4932-9528-B905FAF3C697}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

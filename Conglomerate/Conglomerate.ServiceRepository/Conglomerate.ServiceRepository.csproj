@@ -5,10 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Conglomerate.ServiceRepository\Conglomerate.ServiceRepository.csproj" />
+    <ProjectReference Include="..\Conglomerate.Data\Conglomerate.Data.csproj" />
   </ItemGroup>
+
 </Project>

@@ -1,47 +1,59 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
-using Conglomerate.Data.Contexts;
-using Conglomerate.Data.Entities.SandwichShop;
+using AutoMapper;
+
+using Conglomerate.Api.Models;
+using Conglomerate.ServiceRepository.Models;
+using Conglomerate.ServiceRepository.Services;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Conglomerate.ApiLib
 {
     [Route("api/[controller]")]
     public class IngredientsController : ControllerBase
     {
+        private readonly IIngredientService _ingredientService;
+        private readonly IMapper _mapper;
+
+        public IngredientsController(IIngredientService ingredientService, IMapper mapper)
+        {
+            _ingredientService = ingredientService;
+            _mapper = mapper;
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            using var context = new SandwichShopContext();
-
-            var ingredients = await context.Ingredients.ToListAsync();
-
-            return Ok(ingredients);
+            return Ok(_mapper.Map<List<IngredientDto>>(await _ingredientService.GetAll()));
         }
 
         [HttpGet]
         [Route("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            using var context = new SandwichShopContext();
-
-            var ingredient = await context.Ingredients.FirstAsync(s => s.Id == id);
-
-            return Ok(ingredient);
+            return Ok(_mapper.Map<IngredientDto>(await _ingredientService.Get(id)));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Ingredient ingredient)
+        public async Task<IActionResult> Create([FromBody] IngredientDto ingredient)
         {
-            using var context = new SandwichShopContext();
+            return Created("", _mapper.Map<IngredientDto>(await _ingredientService.Create(_mapper.Map<IngredientLogic>(ingredient))));
+        }
 
-            context.Ingredients.Add(ingredient);
-            await context.SaveChangesAsync();
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] IngredientDto ingredient)
+        {
+            return Ok(_mapper.Map<IngredientDto>(await _ingredientService.Update(id, _mapper.Map<IngredientLogic>(ingredient))));
+        }
 
-            return Created("", ingredient.Id);
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return Ok(_mapper.Map<IngredientDto>(await _ingredientService.Delete(id)));
         }
     }
 }

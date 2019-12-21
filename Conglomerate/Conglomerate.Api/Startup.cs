@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Conglomerate.Data.Contexts;
+using Conglomerate.ServiceRepository.Repositories;
+using Conglomerate.ServiceRepository.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +29,18 @@ namespace Conglomerate.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // Auto Mapper
+            services.AddAutoMapper(typeof(Startup));
+
+            // Services
+            services.AddTransient<IIngredientService, IngredientService>();
+
+            // Repositories
+            services.AddTransient<IIngredientRepository, IngredientRepository>();
+
+            // Db Contexts
+            services.AddDbContext<SandwichShopContext>(ServiceLifetime.Transient);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
