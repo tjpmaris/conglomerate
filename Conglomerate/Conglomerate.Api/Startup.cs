@@ -6,6 +6,7 @@ using AutoMapper;
 using Conglomerate.Data.Contexts;
 using Conglomerate.ServiceRepository.Repositories;
 using Conglomerate.ServiceRepository.Services;
+using Lamar;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,18 +27,24 @@ namespace Conglomerate.Api
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureContainer(ServiceRegistry services)
         {
             services.AddControllers();
+
+            services.Scan(s =>
+            {
+                s.TheCallingAssembly();
+                s.WithDefaultConventions();
+            });
 
             // Auto Mapper
             services.AddAutoMapper(typeof(Startup));
 
             // Services
-            services.AddTransient<IIngredientService, IngredientService>();
+            services.For<IIngredientService>().Use<IngredientService>();
 
             // Repositories
-            services.AddTransient<IIngredientRepository, IngredientRepository>();
+            services.For<IIngredientRepository>().Use<IngredientRepository>();
 
             // Db Contexts
             services.AddDbContext<SandwichShopContext>(ServiceLifetime.Transient);

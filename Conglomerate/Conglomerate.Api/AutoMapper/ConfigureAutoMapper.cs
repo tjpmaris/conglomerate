@@ -4,7 +4,7 @@ using Conglomerate.Api.Models;
 using Conglomerate.Data.Entities.SandwichShop;
 using Conglomerate.ServiceRepository.Models;
 
-namespace Conglomerate.App.Configuration
+namespace Conglomerate.App.AutoMapper
 {
     public class ConfigureAutoMapper : Profile
     {
