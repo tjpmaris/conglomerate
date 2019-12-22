@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Conglomerate.ApiLib\Conglomerate.Api.csproj" />
+    <ProjectReference Include="..\Conglomerate.Api\Conglomerate.Api.csproj" />
   </ItemGroup>
 
 </Project>

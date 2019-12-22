@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.App", "Conglomerate.Api\Conglomerate.App.csproj", "{5FB9A360-55AD-44D6-AD18-CEA4722BFA13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.App", "Conglomerate.App\Conglomerate.App.csproj", "{5FB9A360-55AD-44D6-AD18-CEA4722BFA13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.Api", "Conglomerate.ApiLib\Conglomerate.Api.csproj", "{9F6E18E7-314C-40D5-8937-0AFE3A9C7179}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.Api", "Conglomerate.Api\Conglomerate.Api.csproj", "{9F6E18E7-314C-40D5-8937-0AFE3A9C7179}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.Data", "Conglomerate.Data\Conglomerate.Data.csproj", "{A6ADF54C-7ACD-4616-8624-932385F6266C}"
 EndProject
