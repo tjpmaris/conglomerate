@@ -1,19 +1,19 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
 using AutoMapper;
+
 using Conglomerate.Data.Contexts;
 using Conglomerate.ServiceRepository.Repositories;
 using Conglomerate.ServiceRepository.Services;
+
 using Lamar;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Conglomerate.Api
 {
@@ -38,7 +38,8 @@ namespace Conglomerate.Api
             });
 
             // Auto Mapper
-            services.AddAutoMapper(typeof(Startup));
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(s => s.GetName().Name.StartsWith(nameof(Conglomerate)));
+            services.AddAutoMapper(assemblies);
 
             // Services
             services.For<IIngredientService>().Use<IngredientService>();
