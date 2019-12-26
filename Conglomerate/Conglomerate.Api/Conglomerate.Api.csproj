@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Conglomerate.CQRS\Conglomerate.CQRS.csproj" />
     <ProjectReference Include="..\Conglomerate.ServiceRepository\Conglomerate.ServiceRepository.csproj" />
   </ItemGroup>
 </Project>

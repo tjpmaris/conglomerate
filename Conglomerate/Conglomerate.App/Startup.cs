@@ -1,13 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using AutoMapper;
-
+using Conglomerate.CQRS.Queries;
 using Conglomerate.Data.Contexts;
 using Conglomerate.ServiceRepository.Repositories;
 using Conglomerate.ServiceRepository.Services;
 
 using Lamar;
+
+using MediatR;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,8 +40,14 @@ namespace Conglomerate.Api
                 s.WithDefaultConventions();
             });
 
+            var assemblies =
+                AppDomain
+                    .CurrentDomain
+                    .GetAssemblies()
+                    .Where(s => s.GetName().Name.StartsWith(nameof(Conglomerate)))
+                    .ToArray();
+
             // Auto Mapper
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(s => s.GetName().Name.StartsWith(nameof(Conglomerate)));
             services.AddAutoMapper(assemblies);
 
             // Services
@@ -46,6 +55,25 @@ namespace Conglomerate.Api
 
             // Repositories
             services.For<IIngredientRepository>().Use<IngredientRepository>();
+
+            // Mediatr
+            services.AddMediatR(assemblies);
+
+            services.Scan(scanner =>
+            {
+                foreach (var assembly in assemblies)
+                {
+                    scanner.Assembly(assembly);
+                }
+
+                scanner.ConnectImplementationsToTypesClosing(typeof(IRequestHandler<,>));
+            });
+
+            // For some reason we need to register one of the handlers for Lamar to register all of them
+            services.For<IRequestHandler<IngredientGetAll.Query, IList<IngredientGetAll.Ingredient>>>().Use<IngredientGetAll.Handler>();
+
+            services.For<IMediator>().Use<Mediator>().Transient();
+            services.For<ServiceFactory>().Use(ctx => ctx.GetInstance);
 
             // Db Contexts
             services.AddDbContext<SandwichShopContext>(ServiceLifetime.Transient);

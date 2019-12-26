@@ -9,9 +9,9 @@ using Conglomerate.ServiceRepository.Services;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Conglomerate.ApiLib
+namespace Conglomerate.Api.ServiceRepository
 {
-    [Route("api/[controller]")]
+    [Route("api/servicerepository/[controller]")]
     public class IngredientsController : ControllerBase
     {
         private readonly IIngredientService _ingredientService;

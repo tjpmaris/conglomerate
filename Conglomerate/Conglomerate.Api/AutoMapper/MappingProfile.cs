@@ -3,7 +3,7 @@
 using Conglomerate.Api.Models;
 using Conglomerate.ServiceRepository.Models;
 
-namespace Conglomerate.App.AutoMapper
+namespace Conglomerate.Api.AutoMapper
 {
     public class MappingProfile : Profile
     {

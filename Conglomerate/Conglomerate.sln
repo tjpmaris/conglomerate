@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.App", "Conglomerate.App\Conglomerate.App.csproj", "{5FB9A360-55AD-44D6-AD18-CEA4722BFA13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conglomerate.App", "Conglomerate.App\Conglomerate.App.csproj", "{5FB9A360-55AD-44D6-AD18-CEA4722BFA13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.Api", "Conglomerate.Api\Conglomerate.Api.csproj", "{9F6E18E7-314C-40D5-8937-0AFE3A9C7179}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conglomerate.Api", "Conglomerate.Api\Conglomerate.Api.csproj", "{9F6E18E7-314C-40D5-8937-0AFE3A9C7179}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.Data", "Conglomerate.Data\Conglomerate.Data.csproj", "{A6ADF54C-7ACD-4616-8624-932385F6266C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conglomerate.Data", "Conglomerate.Data\Conglomerate.Data.csproj", "{A6ADF54C-7ACD-4616-8624-932385F6266C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.ServiceRepository", "Conglomerate.ServiceRepository\Conglomerate.ServiceRepository.csproj", "{CA882D61-8308-4932-9528-B905FAF3C697}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conglomerate.ServiceRepository", "Conglomerate.ServiceRepository\Conglomerate.ServiceRepository.csproj", "{CA882D61-8308-4932-9528-B905FAF3C697}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.CQRS", "Conglomerate.CQRS\Conglomerate.CQRS.csproj", "{77BABA8E-56A6-4C56-9ED0-1B49791991A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CA882D61-8308-4932-9528-B905FAF3C697}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA882D61-8308-4932-9528-B905FAF3C697}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA882D61-8308-4932-9528-B905FAF3C697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77BABA8E-56A6-4C56-9ED0-1B49791991A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77BABA8E-56A6-4C56-9ED0-1B49791991A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77BABA8E-56A6-4C56-9ED0-1B49791991A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77BABA8E-56A6-4C56-9ED0-1B49791991A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

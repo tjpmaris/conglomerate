@@ -3,7 +3,7 @@
 using Conglomerate.Data.Entities.SandwichShop;
 using Conglomerate.ServiceRepository.Models;
 
-namespace Conglomerate.App.AutoMapper
+namespace Conglomerate.ServiceRepository.AutoMapper
 {
     public class MappingProfile : Profile
     {
