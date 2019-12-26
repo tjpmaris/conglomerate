@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-using Conglomerate.CQRS.Queries;
+using Conglomerate.Cqrs.Queries;
 
 using MediatR;
 

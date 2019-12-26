@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using AutoMapper;
-using Conglomerate.CQRS.Queries;
+
+using Conglomerate.Cqrs.Queries;
 using Conglomerate.Data.Contexts;
 using Conglomerate.ServiceRepository.Repositories;
 using Conglomerate.ServiceRepository.Services;

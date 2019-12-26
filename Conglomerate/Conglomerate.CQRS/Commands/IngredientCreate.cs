@@ -7,7 +7,7 @@ using Conglomerate.Data.Contexts;
 
 using MediatR;
 
-namespace Conglomerate.CQRS.Queries
+namespace Conglomerate.Cqrs.Queries
 {
     public static class IngredientCreate
     {

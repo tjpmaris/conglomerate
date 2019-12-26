@@ -11,7 +11,7 @@ using MediatR;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace Conglomerate.CQRS.Queries
+namespace Conglomerate.Cqrs.Queries
 {
     public static class IngredientGetAll
     {

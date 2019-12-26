@@ -6,9 +6,10 @@ using AutoMapper;
 using Conglomerate.Data.Contexts;
 
 using MediatR;
+
 using Microsoft.EntityFrameworkCore;
 
-namespace Conglomerate.CQRS.Queries
+namespace Conglomerate.Cqrs.Queries
 {
     public static class IngredientDelete
     {

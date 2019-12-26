@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 
-using Conglomerate.CQRS.Queries;
+using Conglomerate.Cqrs.Queries;
 using Conglomerate.Data.Entities.SandwichShop;
 
-namespace Conglomerate.CQRS.AutoMapper
+namespace Conglomerate.Cqrs.AutoMapper
 {
     public class MappingProfile : Profile
     {

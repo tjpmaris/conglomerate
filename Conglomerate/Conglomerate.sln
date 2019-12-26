@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conglomerate.Data", "Conglo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conglomerate.ServiceRepository", "Conglomerate.ServiceRepository\Conglomerate.ServiceRepository.csproj", "{CA882D61-8308-4932-9528-B905FAF3C697}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.CQRS", "Conglomerate.CQRS\Conglomerate.CQRS.csproj", "{77BABA8E-56A6-4C56-9ED0-1B49791991A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.Cqrs", "Conglomerate.Cqrs\Conglomerate.Cqrs.csproj", "{77BABA8E-56A6-4C56-9ED0-1B49791991A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
