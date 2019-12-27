@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conglomerate.ServiceReposit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conglomerate.Cqrs", "Conglomerate.Cqrs\Conglomerate.Cqrs.csproj", "{77BABA8E-56A6-4C56-9ED0-1B49791991A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.Hangfire", "Conglomerate.Hangfire\Conglomerate.Hangfire.csproj", "{4F5FC8F4-4D96-4C51-9A80-3D5834D364C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conglomerate.Hangfire", "Conglomerate.Hangfire\Conglomerate.Hangfire.csproj", "{4F5FC8F4-4D96-4C51-9A80-3D5834D364C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{E96C24F7-5B74-49F7-8DEC-A681F42B06E6}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{F9F6BA4A-AB71-4F90-8703-9D7CC59FFB6F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{9936EC63-4D65-4675-9966-9121209FDBBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conglomerate.Printing", "Conglomerate.Printing\Conglomerate.Printing.csproj", "{6714455B-A6A2-4AE9-8895-C315DEB5B219}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{4F5FC8F4-4D96-4C51-9A80-3D5834D364C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F5FC8F4-4D96-4C51-9A80-3D5834D364C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F5FC8F4-4D96-4C51-9A80-3D5834D364C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6714455B-A6A2-4AE9-8895-C315DEB5B219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6714455B-A6A2-4AE9-8895-C315DEB5B219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6714455B-A6A2-4AE9-8895-C315DEB5B219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6714455B-A6A2-4AE9-8895-C315DEB5B219}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{CA882D61-8308-4932-9528-B905FAF3C697} = {5DA6BD18-6DB5-43F8-B97A-4A11F09AA2EF}
 		{77BABA8E-56A6-4C56-9ED0-1B49791991A5} = {5DA6BD18-6DB5-43F8-B97A-4A11F09AA2EF}
 		{4F5FC8F4-4D96-4C51-9A80-3D5834D364C5} = {E96C24F7-5B74-49F7-8DEC-A681F42B06E6}
+		{6714455B-A6A2-4AE9-8895-C315DEB5B219} = {E96C24F7-5B74-49F7-8DEC-A681F42B06E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {551125C1-A109-4180-85ED-FD74E68B97EF}
