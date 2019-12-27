@@ -10,12 +10,11 @@ namespace Conglomerate.Data.Contexts
         public DbSet<Ingredient> Ingredients { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=sandwichshop.db");
+            => options.UseMySql("Server=localhost;Port=3306;Database=SandwichShop;Uid=root;Pwd=password;");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("sandwichshop.db")
-                .Entity<Ingredient>(ConfigureIngredients);
+            modelBuilder.Entity<Ingredient>(ConfigureIngredients);
         }
 
         private void ConfigureIngredients(EntityTypeBuilder<Ingredient> entity)

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Conglomerate.Data.Migrations
 {
@@ -6,16 +7,12 @@ namespace Conglomerate.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema(
-                name: "sandwichshop.db");
-
             migrationBuilder.CreateTable(
                 name: "Ingredients",
-                schema: "sandwichshop.db",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Price = table.Column<decimal>(nullable: false)
                 },
@@ -26,7 +23,6 @@ namespace Conglomerate.Data.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ingredients_Name",
-                schema: "sandwichshop.db",
                 table: "Ingredients",
                 column: "Name",
                 unique: true);
@@ -35,8 +31,7 @@ namespace Conglomerate.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Ingredients",
-                schema: "sandwichshop.db");
+                name: "Ingredients");
         }
     }
 }
