@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 using AutoMapper;
@@ -8,6 +9,9 @@ using Conglomerate.Cqrs.Queries;
 using Conglomerate.Data.Contexts;
 using Conglomerate.ServiceRepository.Repositories;
 using Conglomerate.ServiceRepository.Services;
+
+using Hangfire;
+using Hangfire.MySql.Core;
 
 using Lamar;
 
@@ -78,6 +82,28 @@ namespace Conglomerate.Api
 
             // Db Contexts
             services.AddDbContext<SandwichShopContext>(ServiceLifetime.Transient);
+
+            // Hangfire
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseStorage(new MySqlStorage(Configuration.GetConnectionString("Hangfire"), new MySqlStorageOptions()
+                {
+                    TransactionIsolationLevel = IsolationLevel.ReadCommitted,
+                    QueuePollInterval = TimeSpan.FromSeconds(2),
+                    JobExpirationCheckInterval = TimeSpan.FromHours(1),
+                    CountersAggregateInterval = TimeSpan.FromMinutes(5),
+                    PrepareSchemaIfNecessary = true,
+                    DashboardJobListLimit = 50000,
+                    TransactionTimeout = TimeSpan.FromMinutes(1),
+                    TablePrefix = "Hangfire"
+                })));
+
+            services.AddHangfireServer(options =>
+            {
+                options.Queues = new[] { "default", "api" };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

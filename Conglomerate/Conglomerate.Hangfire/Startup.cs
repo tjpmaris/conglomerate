@@ -1,7 +1,11 @@
 using System;
 using System.Data;
+
+using Conglomerate.Process.Recurring;
+
 using Hangfire;
 using Hangfire.MySql.Core;
+using Hangfire.Storage;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,13 +43,16 @@ namespace Conglomerate.Hangfire
                     TablePrefix = "Hangfire"
                 })));
 
-            services.AddHangfireServer();
+            services.AddHangfireServer(options =>
+            {
+                options.Queues = new[] { "default", "agent" };
+            });
 
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IBackgroundJobClient backgroundJobs, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IRecurringJobManager recurringJobs, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -62,7 +69,16 @@ namespace Conglomerate.Hangfire
             });
 
             app.UseHangfireDashboard();
-            backgroundJobs.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
+
+            using (var connection = JobStorage.Current.GetConnection())
+            {
+                foreach (var recurringJob in connection.GetRecurringJobs())
+                {
+                    RecurringJob.RemoveIfExists(recurringJob.Id);
+                }
+            }
+
+            recurringJobs.AddOrUpdate<MinutelyProcess>(nameof(MinutelyProcess), s => s.Execute(), "*/1 * * * 1-5", queue: "agent");
         }
     }
 }

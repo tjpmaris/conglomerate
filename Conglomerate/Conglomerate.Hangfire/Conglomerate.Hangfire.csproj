@@ -10,4 +10,8 @@
     <PackageReference Include="Hangfire.MySql.Core" Version="2.2.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Conglomerate.Process\Conglomerate.Process.csproj" />
+  </ItemGroup>
+
 </Project>

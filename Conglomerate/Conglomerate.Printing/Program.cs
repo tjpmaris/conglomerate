@@ -9,7 +9,7 @@ namespace Conglomerate.Printing
         {
             var program = "C:\\Users\\tryst\\AppData\\Local\\PdfToPrinter\\print.exe";
             var doc = "\"C:\\code\\conglomerate\\Conglomerate\\Conglomerate.Printing\\Documents\\Pdf.pdf\"";
-            var printer = "\"Virtual Printer\"";
+            var printer = "\"Canon MG6600 series Printer\"";
             var command = $"{doc} {printer}";
 
             ProcessStartInfo startInfo = new ProcessStartInfo
