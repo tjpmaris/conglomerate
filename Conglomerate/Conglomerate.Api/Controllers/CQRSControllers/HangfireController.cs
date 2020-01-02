@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 using Conglomerate.Process.Common.Constants;
 using Conglomerate.Process.Common.Jobs;
@@ -21,9 +22,10 @@ namespace Conglomerate.Api.Controllers.CQRSControllers
         [HttpGet]
         public async Task<IActionResult> DoProcess()
         {
-            _jobFactory.CreateSingleJob()
+            _jobFactory
+                .CreateJob()
                 .OnQueue(JobQueues.AGENT)
-                .Start<OneTimeProcess>(s => s.Execute());
+                .Schedule<MultiParameterProcess>(s => s.Execute("Bob", 22), DateTimeOffset.Now);
 
             return Ok();
         }

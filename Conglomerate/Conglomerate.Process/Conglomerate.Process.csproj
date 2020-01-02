@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Conglomerate.Data\Conglomerate.Data.csproj" />
+    <ProjectReference Include="..\Conglomerate.Process.Common\Conglomerate.Process.Common.csproj" />
   </ItemGroup>
 
 </Project>

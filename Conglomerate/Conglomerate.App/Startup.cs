@@ -93,7 +93,7 @@ namespace Conglomerate.Api
                 .UseStorage(new MySqlStorage(Configuration.GetConnectionString("Hangfire"), new MySqlStorageOptions()
                 {
                     TransactionIsolationLevel = IsolationLevel.ReadCommitted,
-                    QueuePollInterval = TimeSpan.FromSeconds(2),
+                    QueuePollInterval = TimeSpan.FromSeconds(1),
                     JobExpirationCheckInterval = TimeSpan.FromHours(1),
                     CountersAggregateInterval = TimeSpan.FromMinutes(5),
                     PrepareSchemaIfNecessary = true,
@@ -104,7 +104,8 @@ namespace Conglomerate.Api
 
             services.AddHangfireServer(options =>
             {
-                options.Queues = new[] { JobQueues.DEFAULT, JobQueues.API };
+                // Order determines priority
+                options.Queues = new[] { JobQueues.API, JobQueues.DEFAULT };
             });
 
             services.For<IJobFactory>().Use<JobFactory>();

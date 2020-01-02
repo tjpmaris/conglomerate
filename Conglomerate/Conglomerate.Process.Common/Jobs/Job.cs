@@ -12,19 +12,20 @@ namespace Conglomerate.Process.Common.Jobs
     public interface IJob
     {
         IJob OnQueue(string queue);
-        string Start<T>(Expression<Func<T, Task>> methodCall);
+        string Enqueue<T>(Expression<Func<T, Task>> methodCall);
+        string Schedule<T>(Expression<Func<T, Task>> methodCall, DateTimeOffset enqueueAt);
     }
 
     public class Job : IJob
     {
         private readonly IBackgroundJobClient _backgroundJobClient;
-        private IState state;
+        private IState _queue;
 
         public Job(IBackgroundJobClient backgroundJobClient)
         {
             _backgroundJobClient = backgroundJobClient;
 
-            state = new EnqueuedState(JobQueues.DEFAULT);
+            _queue = new EnqueuedState(JobQueues.DEFAULT);
         }
 
         public IJob OnQueue(string queue)
@@ -34,14 +35,19 @@ namespace Conglomerate.Process.Common.Jobs
                 throw new ArgumentException($"Queue is not defined: {queue}");
             }
 
-            state = new EnqueuedState(queue.ToString());
+            _queue = new EnqueuedState(queue.ToString());
 
             return this;
         }
 
-        public string Start<T>(Expression<Func<T, Task>> methodCall)
+        public string Enqueue<T>(Expression<Func<T, Task>> methodCall)
         {
-            return _backgroundJobClient.Create(methodCall, state);
+            return _backgroundJobClient.Create(methodCall, _queue);
+        }
+
+        public string Schedule<T>(Expression<Func<T, Task>> methodCall, DateTimeOffset enqueueAt)
+        {
+            return _backgroundJobClient.Schedule(methodCall, enqueueAt);
         }
     }
 }

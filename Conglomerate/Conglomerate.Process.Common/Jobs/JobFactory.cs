@@ -4,7 +4,7 @@ namespace Conglomerate.Process.Common.Jobs
 {
     public interface IJobFactory
     {
-        IJob CreateSingleJob();
+        IJob CreateJob();
     }
 
     public class JobFactory : IJobFactory
@@ -16,7 +16,7 @@ namespace Conglomerate.Process.Common.Jobs
             _backgroundJobClient = backgroundJobClient;
         }
 
-        public IJob CreateSingleJob()
+        public IJob CreateJob()
         {
             return new Job(_backgroundJobClient);
         }
