@@ -9,25 +9,25 @@ using Hangfire.States;
 
 namespace Conglomerate.Process.Common.Jobs
 {
-    public interface ISingleJob
+    public interface IJob
     {
-        ISingleJob OnQueue(string queue);
+        IJob OnQueue(string queue);
         string Start<T>(Expression<Func<T, Task>> methodCall);
     }
 
-    public class SingleJob : ISingleJob
+    public class Job : IJob
     {
         private readonly IBackgroundJobClient _backgroundJobClient;
         private IState state;
 
-        public SingleJob(IBackgroundJobClient backgroundJobClient)
+        public Job(IBackgroundJobClient backgroundJobClient)
         {
             _backgroundJobClient = backgroundJobClient;
 
             state = new EnqueuedState(JobQueues.DEFAULT);
         }
 
-        public ISingleJob OnQueue(string queue)
+        public IJob OnQueue(string queue)
         {
             if (!JobQueues.Contains(queue))
             {
