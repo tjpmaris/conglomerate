@@ -8,6 +8,7 @@ using AutoMapper;
 using Conglomerate.Cqrs.Queries;
 using Conglomerate.Data.Contexts;
 using Conglomerate.Process.Common.Constants;
+using Conglomerate.Process.Common.Jobs;
 using Conglomerate.ServiceRepository.Repositories;
 using Conglomerate.ServiceRepository.Services;
 
@@ -103,8 +104,10 @@ namespace Conglomerate.Api
 
             services.AddHangfireServer(options =>
             {
-                options.Queues = new[] { Queues.DEFAULT, Queues.API };
+                options.Queues = new[] { JobQueues.DEFAULT, JobQueues.API };
             });
+
+            services.For<IJobFactory>().Use<JobFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

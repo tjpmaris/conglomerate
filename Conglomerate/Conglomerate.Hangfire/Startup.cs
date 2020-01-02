@@ -51,7 +51,7 @@ namespace Conglomerate.Hangfire
 
             services.AddHangfireServer(options =>
             {
-                options.Queues = new[] { Queues.DEFAULT, Queues.AGENT };
+                options.Queues = new[] { JobQueues.DEFAULT, JobQueues.AGENT };
             });
 
             services.AddMvc();
