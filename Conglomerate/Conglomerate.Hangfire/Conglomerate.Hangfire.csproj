@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Conglomerate.Process.Common\Conglomerate.Process.Common.csproj" />
     <ProjectReference Include="..\Conglomerate.Process\Conglomerate.Process.csproj" />
   </ItemGroup>
 

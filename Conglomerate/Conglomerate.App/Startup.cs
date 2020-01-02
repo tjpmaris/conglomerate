@@ -7,6 +7,7 @@ using AutoMapper;
 
 using Conglomerate.Cqrs.Queries;
 using Conglomerate.Data.Contexts;
+using Conglomerate.Process.Common.Constants;
 using Conglomerate.ServiceRepository.Repositories;
 using Conglomerate.ServiceRepository.Services;
 
@@ -102,7 +103,7 @@ namespace Conglomerate.Api
 
             services.AddHangfireServer(options =>
             {
-                options.Queues = new[] { "default", "api" };
+                options.Queues = new[] { Queues.DEFAULT, Queues.API };
             });
         }
 

@@ -2,6 +2,7 @@ using System;
 using System.Data;
 
 using Conglomerate.Data.Contexts;
+using Conglomerate.Process.Common.Constants;
 using Conglomerate.Process.Recurring;
 
 using Hangfire;
@@ -50,7 +51,7 @@ namespace Conglomerate.Hangfire
 
             services.AddHangfireServer(options =>
             {
-                options.Queues = new[] { "default", "agent" };
+                options.Queues = new[] { Queues.DEFAULT, Queues.AGENT };
             });
 
             services.AddMvc();
