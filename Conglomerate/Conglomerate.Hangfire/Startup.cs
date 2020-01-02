@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 
+using Conglomerate.Data.Contexts;
 using Conglomerate.Process.Recurring;
 
 using Hangfire;
@@ -27,6 +28,10 @@ namespace Conglomerate.Hangfire
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Db Contexts
+            services.AddDbContext<SandwichShopContext>(ServiceLifetime.Transient);
+
+            // Hangfire
             services.AddHangfire(configuration => configuration
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                 .UseSimpleAssemblyNameTypeSerializer()

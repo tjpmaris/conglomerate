@@ -7,7 +7,7 @@ namespace Conglomerate.Process.Recurring
     {
         public async Task Execute()
         {
-            Console.WriteLine("This is a minutely process");
+            Console.WriteLine("This is a process happens every minute");
         }
     }
 }
