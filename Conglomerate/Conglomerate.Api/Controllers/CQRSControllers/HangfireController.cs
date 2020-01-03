@@ -22,10 +22,17 @@ namespace Conglomerate.Api.Controllers.CQRSControllers
         [HttpGet]
         public async Task<IActionResult> DoProcess()
         {
+            var jobId =
+                _jobFactory
+                    .CreateJob()
+                    .OnQueue(JobQueues.AGENT)
+                    .Enqueue<SleepyProcess>(s => s.Execute());
+
             _jobFactory
                 .CreateJob()
                 .OnQueue(JobQueues.AGENT)
-                .Schedule<MultiParameterProcess>(s => s.Execute("Bob", 22), DateTimeOffset.Now);
+                .WaitFor(jobId)
+                .Enqueue<MultiParameterProcess>(s => s.Execute("Bob", 22));
 
             return Ok();
         }
