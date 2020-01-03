@@ -39,13 +39,13 @@ namespace Conglomerate.Process.Common.Jobs
         string Schedule<T>(Expression<Func<T, Task>> methodCall, DateTimeOffset enqueueAt);
     }
 
-    public class Job : IJob
+    public class HangfireJob : IJob
     {
         private readonly IBackgroundJobClient _backgroundJobClient;
         private IState _queue;
         private string _parentId;
 
-        public Job(IBackgroundJobClient backgroundJobClient)
+        public HangfireJob(IBackgroundJobClient backgroundJobClient)
         {
             _backgroundJobClient = backgroundJobClient;
 

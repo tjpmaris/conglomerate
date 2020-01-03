@@ -18,7 +18,7 @@ namespace Conglomerate.Process.Common.Jobs
 
         public IJob CreateJob()
         {
-            return new Job(_backgroundJobClient);
+            return new HangfireJob(_backgroundJobClient);
         }
     }
 }
