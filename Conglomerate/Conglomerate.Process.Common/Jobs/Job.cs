@@ -11,8 +11,24 @@ namespace Conglomerate.Process.Common.Jobs
 {
     public interface IJob
     {
+        /// <summary>
+        ///     Sets the queue for the job.
+        ///     Note: Will throw an exception if the queue is not defined in JobQueues.
+        /// </summary>
+        /// <returns>The job that this method was called on.</returns>
         IJob OnQueue(string queue);
+
+        /// <summary>
+        ///     Enqueues the job to be ran.
+        /// </summary>
+        /// <returns>The id of the job that was scheduled.</returns>
         string Enqueue<T>(Expression<Func<T, Task>> methodCall);
+
+        /// <summary>
+        ///     Schedules the job to be ran at the specified DateTimeOffset.
+        ///     Note: The specified queue will not be respected. Scheduled jobs always go on the default queue
+        /// </summary>
+        /// <returns>The id of the job that was scheduled.</returns>
         string Schedule<T>(Expression<Func<T, Task>> methodCall, DateTimeOffset enqueueAt);
     }
 
